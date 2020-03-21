@@ -19,10 +19,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -51,26 +51,25 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        /*
-                <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rv"        />
 
-         */
-
-       RecyclerView rv = (RecyclerView)findViewById(R.id.rv);
-        rv.setHasFixedSize(true);
-        //rv.setLayoutManager(new LinearLayoutManager(this));
         ArrayList<HelpRequest> helpRequests = new ArrayList<>();
+        ArrayAdapter groupListAdapter = new HelRequestAdapter(this, helpRequests);
+        ListView listView = findViewById(R.id.lv);
+        listView.setAdapter(groupListAdapter);
+
         helpRequests.add(new HelpRequest(
-            "1",
+                "1",
+                "helo",
+                "my friend"
+        ));
+        helpRequests.add(new HelpRequest(
+                "1",
                 "helo",
                 "my friend"
         ));
 
-        HelpRequestAdapter helpRequestAdapter = new HelpRequestAdapter(helpRequests, this);
-        rv.setAdapter(helpRequestAdapter);
+        groupListAdapter.addAll(helpRequests);
+
     }
 
     @Override
