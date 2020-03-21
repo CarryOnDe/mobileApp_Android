@@ -50,8 +50,15 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+        /*
+                <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv"        />
 
-        RecyclerView rv = (RecyclerView)findViewById(R.id.rv);
+         */
+
+       RecyclerView rv = (RecyclerView)findViewById(R.id.rv);
 
         ArrayList<HelpRequest> helpRequests = new ArrayList<>();
         helpRequests.add(new HelpRequest(
