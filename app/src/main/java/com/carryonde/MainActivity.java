@@ -19,6 +19,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
@@ -59,7 +60,8 @@ public class MainActivity extends AppCompatActivity
          */
 
        RecyclerView rv = (RecyclerView)findViewById(R.id.rv);
-
+        rv.setHasFixedSize(true);
+        //rv.setLayoutManager(new LinearLayoutManager(this));
         ArrayList<HelpRequest> helpRequests = new ArrayList<>();
         helpRequests.add(new HelpRequest(
             "1",
