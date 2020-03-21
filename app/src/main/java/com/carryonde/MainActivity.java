@@ -2,6 +2,7 @@ package com.carryonde;
 
 import android.os.Bundle;
 
+import com.carryonde.model.HelpRequest;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -18,8 +19,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,6 +49,19 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        RecyclerView rv = (RecyclerView)findViewById(R.id.rv);
+
+        ArrayList<HelpRequest> helpRequests = new ArrayList<>();
+        helpRequests.add(new HelpRequest(
+            "1",
+                "helo",
+                "my friend"
+        ));
+
+        HelpRequestAdapter helpRequestAdapter = new HelpRequestAdapter(helpRequests, this);
+        rv.setAdapter(helpRequestAdapter);
     }
 
     @Override
