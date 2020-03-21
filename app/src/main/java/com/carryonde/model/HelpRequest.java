@@ -19,10 +19,21 @@ public class HelpRequest {
     @SerializedName("location")
     public Location location = null;
 
-    public  HelpRequest(String organisationId, String title , String description){
+    @SerializedName("distance")
+    public String distance = "";
+
+    @SerializedName("when")
+    public String when = "";
+
+    @SerializedName("duration")
+    public String duration ="";
+
+    public  HelpRequest(String organisationId, String title , String description, String when, String duration, Location location){
         this.organisationId = organisationId;
         this.title = title;
         this.description = description;
+        this.duration = duration;
+        this.location = location;
     }
 
 }

@@ -3,6 +3,7 @@ package com.carryonde;
 import android.os.Bundle;
 
 import com.carryonde.model.HelpRequest;
+import com.carryonde.model.Location;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -57,16 +58,28 @@ public class MainActivity extends AppCompatActivity
         ListView listView = findViewById(R.id.lv);
         listView.setAdapter(groupListAdapter);
 
-        helpRequests.add(new HelpRequest(
-                "1",
-                "helo",
-                "my friend"
-        ));
-        helpRequests.add(new HelpRequest(
-                "1",
-                "helo",
-                "my friend"
-        ));
+        Location location = new Location(
+                "Caritas Konstanz",
+                "4234234",
+                "Elm Streetz",
+                12,
+                "a"
+        );
+
+        HelpRequest example = new HelpRequest(
+            "1",
+                "In der Konstanz Kita aushelfen",
+                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem",
+                "19.07, Dienstag",
+                "3 Stunden",
+                location
+
+        );
+        helpRequests.add(example);
+        helpRequests.add(example);
+        helpRequests.add(example);
+        helpRequests.add(example);
+        helpRequests.add(example);
 
         groupListAdapter.addAll(helpRequests);
 

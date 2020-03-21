@@ -33,22 +33,21 @@ public class HelRequestAdapter extends ArrayAdapter<HelpRequest> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.help_request, parent, false);
         }
         // Lookup view for data population
+        TextView title = (TextView) convertView.findViewById(R.id.requestTitle);
         TextView description = (TextView) convertView.findViewById(R.id.description);
+        TextView location = (TextView) convertView.findViewById(R.id.location);
+        TextView distance = (TextView) convertView.findViewById(R.id.distance);
+        TextView when = (TextView) convertView.findViewById(R.id.when);
+        TextView duration = (TextView) convertView.findViewById(R.id.duration);
         //TextView tvHome = (TextView) convertView.findViewById(R.id.tvHome);
         // Populate the data into the template view using the data object
+        title.setText(helpRequest.title);
         description.setText(helpRequest.description);
-        //tvHome.setText(user.hometown);
-        // Return the completed view to render on screen
+        location.setText(helpRequest.location.shortName);
+        distance.setText(helpRequest.distance);
+        when.setText(helpRequest.when);
+        duration.setText(helpRequest.duration);
         return convertView;
 
-        /*
-            var listItem: View? = convertView
-        if (listItem == null)
-            listItem = LayoutInflater.from(context).inflate(R.layout.group_list_element_view , parent, false)
-        val group = groups?.get(position!!)
-        val name = listItem!!.findViewById(R.id.textView_name) as TextView
-        name.setText(group?.name)
-        return listItem
-         */
     }
 }

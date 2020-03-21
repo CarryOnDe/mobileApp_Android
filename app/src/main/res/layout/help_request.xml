@@ -30,7 +30,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/title"
+                        android:id="@+id/requestTitle"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Title"
@@ -91,10 +91,11 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/date"
+                        android:id="@+id/when"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:textColor="@color/blue"
                         android:text="19.7, Dienstag" />
 
                     <TextView
@@ -102,6 +103,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:textColor="@color/blue"
                         android:text="3 Stunden" />
                 </LinearLayout>
 
