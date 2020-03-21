@@ -43,7 +43,7 @@ public class HelRequestAdapter extends ArrayAdapter<HelpRequest> {
         // Populate the data into the template view using the data object
         title.setText(helpRequest.title);
         description.setText(helpRequest.description);
-        location.setText(helpRequest.location.shortName);
+        location.setText(helpRequest.location);
         distance.setText(helpRequest.distance);
         when.setText(helpRequest.when);
         duration.setText(helpRequest.duration);

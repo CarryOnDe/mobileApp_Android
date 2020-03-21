@@ -3,10 +3,14 @@ package com.carryonde;
 import android.os.Bundle;
 
 import com.carryonde.model.HelpRequest;
+import com.carryonde.model.HelpRequests;
 import com.carryonde.model.Location;
+import com.carryonde.network.CarryOnApi;
+import com.carryonde.network.CarryOnInstance;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
@@ -24,8 +28,14 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -72,7 +82,7 @@ public class MainActivity extends AppCompatActivity
                 "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem",
                 "19.07, Dienstag",
                 "3 Stunden",
-                location
+                "Auf der Weide"
 
         );
         helpRequests.add(example);
@@ -82,6 +92,8 @@ public class MainActivity extends AppCompatActivity
         helpRequests.add(example);
 
         groupListAdapter.addAll(helpRequests);
+
+        getHelpRequests();
 
     }
 
@@ -140,5 +152,29 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void getHelpRequests(){
+        try {
+            CarryOnApi service = CarryOnInstance.getRetrofitInstance().create(CarryOnApi.class);
+            Call<HelpRequests> call = service.getHelpRequestsByRadius("12345", 12);
+            call.enqueue(new Callback<HelpRequests>() {
+                @Override
+                public void onResponse(Call<HelpRequests> call, Response<HelpRequests> response) {
+                    updateBlog(response.body().getHelpRequests());
+                }
+
+                @Override
+                public void onFailure(Call<HelpRequests> call, Throwable t) {
+                    Toast.makeText(MainActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }catch (Exception e){
+            Log.d("NETWORK", e.toString());
+        }
+    }
+
+    public void updateBlog(List<HelpRequest> helpRequests){
+        Toast.makeText(MainActivity.this, "It works mthrfckr", Toast.LENGTH_SHORT).show();
     }
 }

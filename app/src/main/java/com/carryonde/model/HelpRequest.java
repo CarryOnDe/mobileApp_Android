@@ -3,7 +3,12 @@ package com.carryonde.model;
 import com.google.gson.annotations.SerializedName;
 
 public class HelpRequest {
-
+    /*
+        "title" : "Mock Request 1",
+      "description" : "Mock Request 1 description",
+      "requestDate" : "2020-03-21T19:51:55.722752",
+      "location" : "Ort 1",
+     */
     @SerializedName("organisationId")
     public String organisationId = "";
 
@@ -17,7 +22,7 @@ public class HelpRequest {
     public String requestDate = "";
 
     @SerializedName("location")
-    public Location location = null;
+    public String location = null;
 
     @SerializedName("distance")
     public String distance = "";
@@ -28,7 +33,7 @@ public class HelpRequest {
     @SerializedName("duration")
     public String duration ="";
 
-    public  HelpRequest(String organisationId, String title , String description, String when, String duration, Location location){
+    public  HelpRequest(String organisationId, String title , String description, String when, String duration, String location){
         this.organisationId = organisationId;
         this.title = title;
         this.description = description;
