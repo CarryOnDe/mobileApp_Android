@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Contact {
 
+    @SerializedName("orgId")
+    public String orgId = "";
+
     @SerializedName("orgName")
     public String orgName = "";
 
